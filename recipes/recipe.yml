@@ -5,15 +5,6 @@ description: CSAY OS - Private, secure, gaming desktop with local AI
 base-image: ghcr.io/ublue-os/bazzite-nvidia-open
 image-version: stable
 modules:
-  - type: dnf
-    install:
-      packages:
-        - firewalld
-        - wireguard-tools
-        - samba
-        - vim
-        - htop
-        - git
   - type: default-flatpaks
     configurations:
       - notify: true
