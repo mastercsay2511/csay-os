@@ -1,0 +1,18 @@
+[Unit]
+Description=Ollama local AI engine
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+ContainerName=ollama
+Image=docker.io/ollama/ollama:latest
+Network=csay-ai.network
+Volume=ollama-models:/root/.ollama
+Environment=OLLAMA_HOST=0.0.0.0
+
+[Service]
+Restart=always
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target
