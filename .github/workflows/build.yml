@@ -35,4 +35,3 @@ jobs:
           pr_event_number: ${{ github.event.number }}
           build_opts: --no-sign
           maximize_build_space: true
-          build_iso: true
