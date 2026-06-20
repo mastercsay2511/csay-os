@@ -1,4 +1,3 @@
----
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 name: csay-os
 description: CSAY OS - Private, secure, gaming desktop with local AI
@@ -9,6 +8,14 @@ modules:
     files:
       - source: system
         destination: /
+
+  # --- Add the VS Code RPM Repository & Package ---
+  - type: rpm-ostree
+    repos:
+      - https://packages.microsoft.com/yumrepos/vscode/vscode.repo
+    install:
+      - code
+
   - type: default-flatpaks
     configurations:
       - notify: true
@@ -22,10 +29,12 @@ modules:
           - org.keepassxc.KeePassXC
           - org.gimp.GIMP
           - com.github.tchx84.Flatseal
+
   - type: systemd
     system:
       enabled:
         - tailscaled.service
+
   - type: os-release
     properties:
       NAME: CSAY OS
